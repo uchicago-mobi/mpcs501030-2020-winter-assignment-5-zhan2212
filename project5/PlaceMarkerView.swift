@@ -27,7 +27,4 @@ class PlaceMarkerView: MKMarkerAnnotationView {
           glyphImage = UIImage(systemName: "pin.fill")
           }
     }
-    
-    
-
 }

@@ -9,46 +9,40 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
-    
+class MapViewController: UIViewController {
     @IBOutlet weak var viewDescription: UILabel!
     @IBOutlet weak var mapView: MKMapView!{
         didSet { mapView.delegate = self }
     }
-    
+    // IBOutlets
     @IBOutlet weak var placeTitle: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var placeText: UILabel!
     @IBOutlet weak var bottomFavButton: UIButton!
-    
+    // store the current place
     var currPlace = Place()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
-        //        
         // Do any additional setup after loading the view.
         mapView.showsCompass = false
         mapView.pointOfInterestFilter = .excludingAll
-        // load data
-        let dataManager = DataManager.sharedInstance
-        dataManager.loadAnnotationFromPlist()
+        // load data using DataManager
+        DataManager.sharedInstance.loadAnnotationFromPlist()
         for place in DataManager.sharedInstance.placeArr{
+            // add stored places to map
             let annotation = MKPointAnnotation()
             annotation.title = place.name
             annotation.coordinate = place.coordinate
             annotation.subtitle = place.longDescription
             mapView.addAnnotation(annotation)
         }
-        
-        
-        
-        let coord:CLLocationCoordinate2D = CLLocationCoordinate2DMake(Double(41.881832), Double(-87.623177))
-        let region = MKCoordinateRegion(center:coord, latitudinalMeters: 2000, longitudinalMeters: 2000)
+        // set default location
+        let coord:CLLocationCoordinate2D = CLLocationCoordinate2DMake(Double(41.88), Double(-87.62))
+        let region = MKCoordinateRegion(center:coord, latitudinalMeters: 3000, longitudinalMeters: 3000)
         mapView.setRegion(region, animated: true)
-        
-        
+        // set functionality to star button
         favButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        //bottomFavButton.addTarget(self, action: #selector(buttonTapped2), for: .touchUpInside)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,33 +57,27 @@ class ViewController: UIViewController {
             // set deselected
             button.isSelected = false
             DataManager.sharedInstance.deleteFavorite(place: currPlace)
-            print(DataManager.sharedInstance.favArr)
         } else {
             // set selected
             button.isSelected = true
             DataManager.sharedInstance.saveFavorites(place: currPlace)
-            print(DataManager.sharedInstance.favArr)
         }
     }
-    
-
 }
 
-extension ViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+        // set isSelect for star button
         var isFav = false
         for place in DataManager.sharedInstance.favArr{
-            if view.annotation?.title == place.name{
-                isFav = true
-            }
+            if view.annotation?.title == place.name { isFav = true}
         }
         if isFav{
             favButton.isSelected = true
         } else{
             favButton.isSelected = false
         }
-        
-        
+        // show information in the top view
         placeTitle.text = view.annotation?.title!
         placeText.text = view.annotation?.subtitle!
         currPlace = Place()
@@ -105,18 +93,15 @@ extension ViewController: MKMapViewDelegate {
             let identifier = "CustomPin"
             // Create a new view
             var view: MKMarkerAnnotationView
-
             // Deque an annotation view or create a new one
             if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             } else {
-                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
+                view = PlaceMarkerView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = false
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                view.markerTintColor = .blue
-                view.glyphText = "❤︎"
             }
             return view
         }
@@ -124,21 +109,24 @@ extension ViewController: MKMapViewDelegate {
     }
 }
 
-extension ViewController: PlacesFavoritesDelegate {
+extension MapViewController: PlacesFavoritesDelegate {
   func favoritePlace(name: String) {
    // Update the map view based on the favorite
    // place that was passed in
     let placeName = name
     for place in DataManager.sharedInstance.favArr{
         if place.name == placeName{
+            // zoom into the selected place
             let coor = place.coordinate
             let region = MKCoordinateRegion(center:coor, latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: false)
             favButton.isSelected = true
+            placeTitle.text = placeName
+            placeText.text = place.longDescription
+            currPlace = place
             break
         }
     }
-   
   }
 }
 

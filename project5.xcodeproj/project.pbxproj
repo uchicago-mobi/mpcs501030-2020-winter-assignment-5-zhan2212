@@ -13,12 +13,12 @@
 		E53EF28223F0BF5F002799A4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53EF28123F0BF5F002799A4 /* DataManager.swift */; };
 		E5A5D30823EC845A002B0802 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5D30723EC845A002B0802 /* AppDelegate.swift */; };
 		E5A5D30A23EC845A002B0802 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5D30923EC845A002B0802 /* SceneDelegate.swift */; };
-		E5A5D30C23EC845A002B0802 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5D30B23EC845A002B0802 /* ViewController.swift */; };
+		E5A5D30C23EC845A002B0802 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5D30B23EC845A002B0802 /* MapViewController.swift */; };
 		E5A5D30F23EC845A002B0802 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5A5D30D23EC845A002B0802 /* Main.storyboard */; };
-		E5A5D31123EC845B002B0802 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A5D31023EC845B002B0802 /* Assets.xcassets */; };
 		E5A5D31423EC845B002B0802 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5A5D31223EC845B002B0802 /* LaunchScreen.storyboard */; };
 		E5A5D31E23ECA52C002B0802 /* annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5D31D23ECA52C002B0802 /* annotation.swift */; };
 		E5A5D32023ECA5A1002B0802 /* PlaceMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5D31F23ECA5A1002B0802 /* PlaceMarkerView.swift */; };
+		E5CAB7C323F61CAC0066A5B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CAB7C223F61CAC0066A5B2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,13 +29,13 @@
 		E5A5D30423EC845A002B0802 /* project5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A5D30723EC845A002B0802 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5A5D30923EC845A002B0802 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E5A5D30B23EC845A002B0802 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E5A5D30B23EC845A002B0802 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E5A5D30E23EC845A002B0802 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E5A5D31023EC845B002B0802 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5A5D31323EC845B002B0802 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5A5D31523EC845B002B0802 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5A5D31D23ECA52C002B0802 /* annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = annotation.swift; sourceTree = "<group>"; };
 		E5A5D31F23ECA5A1002B0802 /* PlaceMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarkerView.swift; sourceTree = "<group>"; };
+		E5CAB7C223F61CAC0066A5B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +70,9 @@
 			children = (
 				E5A5D30723EC845A002B0802 /* AppDelegate.swift */,
 				E5A5D30923EC845A002B0802 /* SceneDelegate.swift */,
-				E5A5D30B23EC845A002B0802 /* ViewController.swift */,
+				E5A5D30B23EC845A002B0802 /* MapViewController.swift */,
 				E5A5D30D23EC845A002B0802 /* Main.storyboard */,
-				E5A5D31023EC845B002B0802 /* Assets.xcassets */,
+				E5CAB7C223F61CAC0066A5B2 /* Assets.xcassets */,
 				E5A5D31223EC845B002B0802 /* LaunchScreen.storyboard */,
 				E5A5D31523EC845B002B0802 /* Info.plist */,
 				E5A5D31F23ECA5A1002B0802 /* PlaceMarkerView.swift */,
@@ -144,9 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A5D31423EC845B002B0802 /* LaunchScreen.storyboard in Resources */,
-				E5A5D31123EC845B002B0802 /* Assets.xcassets in Resources */,
 				E53EF28023F0BF32002799A4 /* Data.plist in Resources */,
 				E5A5D30F23EC845A002B0802 /* Main.storyboard in Resources */,
+				E5CAB7C323F61CAC0066A5B2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5A5D30C23EC845A002B0802 /* ViewController.swift in Sources */,
+				E5A5D30C23EC845A002B0802 /* MapViewController.swift in Sources */,
 				E53EF28223F0BF5F002799A4 /* DataManager.swift in Sources */,
 				E5A5D30823EC845A002B0802 /* AppDelegate.swift in Sources */,
 				E5A5D32023ECA5A1002B0802 /* PlaceMarkerView.swift in Sources */,
