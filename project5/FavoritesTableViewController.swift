@@ -9,25 +9,15 @@
 import UIKit
 
 class FavoritesTableViewController: UITableViewController {
-
-    var dataManager = DataManager.sharedInstance
-    
     @IBOutlet weak var dismissButton: UIButton!
-    
+    // set up delegate
     weak var delegate: PlacesFavoritesDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         dismissButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        dataManager.loadAnnotationFromPlist()
-        
+        // load data
+        DataManager.sharedInstance.loadAnnotationFromPlist()
     }
     
     @objc func buttonTapped(_ button: UIButton){
@@ -48,11 +38,9 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print(DataManager.sharedInstance.favArr[indexPath.row].name!)
-        print(1111)
-        //navigationController?.popViewController(animated: true)
+        // dismiss the view
         dismiss(animated: true, completion: nil)
+        // pass data to main view controller
         self.delegate?.favoritePlace(name: DataManager.sharedInstance.favArr[indexPath.row].name!)
     }
     /*
